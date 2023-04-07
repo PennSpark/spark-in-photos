@@ -69,10 +69,22 @@ const fetchSlack = async () => {
 
   const response = await fetch(url, options)
   blob = await response.blob()
-  blob = await blob.arrayBuffer()
+  blob = await blob.stream()
   console.log(blob)
 
   // https://support.cloudinary.com/hc/en-us/community/posts/360007581379-Correct-way-of-uploading-from-buffer-
+
+
+  let cld_upload_stream = cloudinary.uploader.upload_stream(
+    {
+      folder: "foo"
+    },
+    function (error, result) {
+      console.log(error, result);
+    }
+  );
+
+  blob.pipe(cld_upload_stream);
 
 }
 
