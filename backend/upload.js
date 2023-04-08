@@ -42,5 +42,11 @@ const fetchAndUpload = async (url) => {
   blob.pipe(cld_upload_stream);
 }
 
-const url = 'https://files.slack.com/files-pri/T02BG31SB7H-F051YPF4UMD/tiger_sticker.png';
+const url = 'https://files.slack.com/files-pri/T02BG31SB7H-F0526MHEJH4/coffee_flavours.jpg';
 fetchAndUpload(url)
+
+/*
+ (1) Upload metadata (work out with jasper what kind of metadata)
+ (2) Fetch Images by week 
+ (3) Images fetches should have all metadata
+ */
