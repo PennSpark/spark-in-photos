@@ -65,7 +65,7 @@ function Loading() {
 
   return (
     <motion.div className="flex justify-center items-center w-full h-screen fixed top-0 right-0 z-50" animate={loading && {opacity: 0}} transition={{delay: 5, duration: 1}} initial={{opacity: 1}}>
-      <motion.div className="w-full bg-[#484a4a] flex justify-evenly items-center"
+      <motion.div className="w-full bg-[#464640] flex justify-evenly items-center"
       variants={zoom}
       animate={loading ? "" : "animate"}
       initial="initial"
