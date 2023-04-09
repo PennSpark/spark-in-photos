@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className='h-[200vw] bg-[#EFEFEA]'>
+    <div className='bg-[#EFEFEA] big-div'>
       <Navbar/>
       <Home/>
     </div>

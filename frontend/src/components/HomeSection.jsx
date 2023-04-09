@@ -1,7 +1,9 @@
 import React from 'react'
 import Picture from './Picture'
+import { useRef } from 'react'
+import './styles.css'
 
-const HomeSection = (props) => {
+const HomeSection = React.forwardRef((props, ref) => {
     const picUrls = [
         "11iWjzooHB3iM8eGN4ZAkEuTRicFtBAT2",
         "1cvu7z9lzpKicgtakbOTq-DdSeu2Icim2",
@@ -27,10 +29,10 @@ const HomeSection = (props) => {
         })
     }
 
-    console.log(dummyPic)
+    // console.log(dummyPic)
 
     return (
-        <div className='h-[90vh] w-screen inline-block'>
+        <div ref = {ref} className='h-[90vh] w-100 inline-block homesection'>
             <div className=''>
                 {dummyPic.map(function(memory, index){
                         const x = Math.random() * window.innerWidth * .9 + window.innerWidth * props.index
@@ -53,5 +55,6 @@ const HomeSection = (props) => {
     </div>
     )
 }
+);
 
 export default HomeSection
