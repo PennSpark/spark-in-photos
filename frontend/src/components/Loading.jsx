@@ -16,7 +16,7 @@ function Loading() {
 
   const variants = {
     initial: {
-      y: "-100%",
+      y: "-80%",
     },
     animate: {
       y: 0,
@@ -24,7 +24,7 @@ function Loading() {
   };
   const variantsRev = {
     initial: {
-      y: "100%",
+      y: "80%",
     },
     animate: {
       y: 0,
@@ -41,7 +41,7 @@ function Loading() {
   const transition = {
     delay: 0.5,
     duration: 3,
-    ease: [0.6, 0.01, -0.05, 0.95],
+    ease: [0.8, 0.01, -0.05, 0.95],
   };
   const zoomTransition = {
     delay: 3,
