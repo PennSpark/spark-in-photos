@@ -20,7 +20,7 @@ export async function fetchAndUpload(url) {
   };
 
   const response = await fetch(url, options)
-  blob = await response.blob()
+  var blob = await response.blob()
   console.log(await blob.arrayBuffer())
   blob = await blob.stream()
 
