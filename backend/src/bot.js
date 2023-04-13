@@ -29,7 +29,7 @@ app.message(async ({ message }) => {
         const time = data.created
         const user = data.user
 
-        fetchAndUpload(url)
+        fetchAndUpload(url, time, user)
         // creates user for auth purpose
         const auth = {
             'Authorization' : 'Bearer ' + process.env.BOT_TOKEN
