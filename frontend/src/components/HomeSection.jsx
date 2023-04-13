@@ -23,7 +23,7 @@ const HomeSection = React.forwardRef((props, ref) => {
 
     for (var i = 0; i < picUrls.length; i ++) {
         dummyPic.push({
-            img: "https://drive.google.com/uc?export=view&id=" + picUrls[i],
+            img: "http://res.cloudinary.com/dtmyx3xep/image/upload/v1681423036/Spork_in_Photos/xl62h4vtbnj8eppxfepv.jpg",
             location: "Singapore",
             title: "Good time",
             people: ["Paul", "Lah"]
@@ -45,13 +45,11 @@ const HomeSection = React.forwardRef((props, ref) => {
                         const h = Math.floor(image.height/12);
                         const w = Math.floor(image.width/12);
                     return(
-                        <>
-                        <div className='indiv-image'>
-                            <Picture img = {memory.img} key={index} location={memory.location} title={memory.title} 
+                        <div key={index} className='indiv-image'>
+                            <Picture img = {memory.img} location={memory.location} title={memory.title} 
                             x={x} y={y} height={h} width={w} z={z}
                             />
                         </div>
-                        </>
                     )
                 })}
             </div>

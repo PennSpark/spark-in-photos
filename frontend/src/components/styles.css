@@ -25,7 +25,8 @@
 }
 
 .image {
-    width: 100rem;
+    /* width: 100rem; */
+    min-width: 100rem;
     height: 100%;
 }
 

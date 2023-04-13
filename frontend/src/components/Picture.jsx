@@ -59,9 +59,9 @@ const Picture = (props) => {
                         <img src={props.img} width={props.width} height={props.height} className='border-4 border-[#FCFCFC] max-w-xs'/>
                     </motion.div>
                     <motion.div className={`${hover ? `z-[101]` : `z-[0]`} relative`} variants={variants} transition={{bounce: 0}}>
-                        <div className={`${hover ? `z-[101]` : `z-[0]`}`}>
-                            <PicInfo key={props.key} title="Hello" people={["Paul", "Lah", "marcel", "lah", "sumanth", "lah"]} location="Cool stuff!" hover={hover}/>
-                        </div>
+                        {/* <div className={`${hover ? `z-[101]` : `z-[0]`}`}>
+                            <PicInfo title="Hello" people={["Paul", "Lah", "marcel", "lah", "sumanth", "lah"]} location="Cool stuff!" hover={hover}/>
+                        </div> */}
                     </motion.div>
                 </motion.div>
 

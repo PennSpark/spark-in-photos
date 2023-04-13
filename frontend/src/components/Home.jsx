@@ -12,9 +12,10 @@ import HorizontalScroll from "react-horizontal-scrolling";
 import { useState, useRef, useEffect } from "react";
 import Dummy from "./Dummy";
 
+
 const Home = () => {
   const [hasMore, setHasMore] = useState(true);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pageNumber, setPageNumber] = useState(2);
   const [sections, setSections] = useState([
     {
       title: "This Week",
@@ -29,7 +30,6 @@ const Home = () => {
   ]);
 
   const observer = useRef();
-
   const lastPageRef = useCallback((node) => {
     console.log("useCallBack called");
     if (observer.current) observer.current.disconnect();
@@ -63,9 +63,10 @@ const Home = () => {
       {
         title: "Last Week",
         date: "10.20-003.3",
-        index: 1,
+        index: pageNumber,
       },
     ]);
+    setPageNumber(pageNumber + 1);
     console.log("loadFun called");
   }
 
@@ -84,10 +85,13 @@ const Home = () => {
             console.log("ref set");
             // setHasMore(true);
             return (
-              <div className="relative">
-                <Dummy ref={lastPageRef} key={index} />
+              <div key={index} className="relative">
+                <Dummy 
+                ref={lastPageRef}
+                title={section.title}
+                date={section.title}
+                index={section.index}/>
                 {/* <HomeSection
-                key={index}
                 ref={lastPageRef}
                 title={section.title}
                 date={section.title}
@@ -98,11 +102,14 @@ const Home = () => {
             );
           } else {
             return (
-              <div className="relative">
-                <Dummy key={index} />
+              <div key={index} className="relative">
+                {/* <Dummy key={index} /> */}
+                <Dummy title={section.title}
+                date={section.title}
+                index={section.index}/>
 
                 {/* <HomeSection
-                key={index}
+                
                 title={section.title}
                 date={section.title}
                 index={section.index}
