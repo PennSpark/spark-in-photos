@@ -1,7 +1,7 @@
 import React from 'react'
 import locationPin from '../assets/locpin.svg'
 
-const PicInfo = ({people, location, title, hover}) => {
+const PicInfo = ({people, location, title, hover, key}) => {
   return (
     <div className={`absolute bottom-0 w-48 my-2 ${hover ? `z-[101]` : `z-30`}`}>
         <div className="font-spaceGrotesk font-bold text-xl flex justify-start z-auto">
