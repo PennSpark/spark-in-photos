@@ -37,7 +37,7 @@ const HomeSection = React.forwardRef((props, ref) => {
             <div className=''>
                 {dummyPic.map(function(memory, index){
                         console.log("Woo")
-                        const x = (Math.random() * 100) + (window.innerWidth/1.1 * (index % 4))/4 + (window.innerWidth * props.index)//(index % 4)/4//(Math.random() * 100) + (window.innerWidth/1.5 * (index % 4))/4 + (window.innerWidth * (props.index))//window.innerWidth * (index % 4)/4 + (window.innerWidth * props.index) //.9 + window.innerWidth * props.index
+                        const x = (Math.random() * 100) + (window.innerWidth/1.1 * (index % 4))/4 //(index % 4)/4//(Math.random() * 100) + (window.innerWidth/1.5 * (index % 4))/4 + (window.innerWidth * (props.index))//window.innerWidth * (index % 4)/4 + (window.innerWidth * props.index) //.9 + window.innerWidth * props.index
                         const y = (Math.random() * 50) + (window.innerHeight/1.7 * (index % 3))/3//(index % 3)/3//(Math.random() * 50) + (window.innerHeight/4 * (index % 3))/3//.9) / 2
                         const z = Math.random() * picUrls.length;
                         var image = new Image();
@@ -47,7 +47,7 @@ const HomeSection = React.forwardRef((props, ref) => {
                     return(
                         <div key={index} className='indiv-image'>
                             <Picture img = {memory.img} location={memory.location} title={memory.title} 
-                            x={x} y={y} height={h} width={w} z={z}
+                            x={x} y={y} height={h} width={w} z={z} key={index} 
                             />
                         </div>
                     )

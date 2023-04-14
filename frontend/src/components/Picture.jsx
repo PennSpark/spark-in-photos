@@ -51,7 +51,7 @@ const Picture = (props) => {
     return (
         <>
         <div className='indiv-image'>
-            <motion.div className='h-screen w-[200vw] absolute top-[-10vh] left-0 bg-white z-[50] pointer-events-none' animate={hover ? "not" : "trans"} variants={overlay}/>
+            <motion.div className='h-screen w-[100vw] fixed top-0 left-0 bg-white z-[50] pointer-events-none' animate={hover ? "not" : "trans"} variants={overlay}/>
             <motion.div className='absolute' style={{ left: props.x, top: props.y, zIndex: props.z}} >
                 <motion.div className='inline-block' whileHover={"hover"} initial={"ini"} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
                     <motion.div className={`relative inline-block origin-top-center ${hover ? `z-[102]` : `z-40`}`} style={{ rotate: tilt }}>
