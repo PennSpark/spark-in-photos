@@ -12,22 +12,49 @@ import HorizontalScroll from "react-horizontal-scrolling";
 import { useState, useRef, useEffect } from "react";
 import Dummy from "./Dummy";
 
+const getDateStringFromWeeksAgo = (weeksAgo) => {
+  const currentDate = new Date(); // get the current date
+  const oneWeekAgo = new Date(); // create a new date object
+
+  oneWeekAgo.setDate(currentDate.getDate() - (7 * weeksAgo)); // subtract 7 days from the current date
+
+  return `${oneWeekAgo.getFullYear()}/${oneWeekAgo.getMonth() + 1}/${oneWeekAgo.getDate()}`
+}
+
 
 const Home = () => {
   const [hasMore, setHasMore] = useState(true);
   const [pageNumber, setPageNumber] = useState(2);
-  const [sections, setSections] = useState([
-    {
-      title: "This Week",
-      date: "11.6 - 11.13",
-      index: 0,
-    },
-    {
-      title: "Last Week",
-      date: "10.20-003.3",
-      index: 1,
-    },
-  ]);
+  const [sections, setSections] = useState([]);
+  const [weeksAgo, setWeeksAgo] = useState(0);
+
+
+  useEffect(() => {
+    async function fetchData() {
+      const date = new Date()
+      const response = await fetch("http://localhost:3000/", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ date: getDateStringFromWeeksAgo(weeksAgo) })
+      })
+      console.log("FIRST LOAD", getDateStringFromWeeksAgo(weeksAgo))
+      const picUrls = await response.json();
+      console.log(picUrls)
+
+      setSections([
+        {
+          title: "Week of ",
+          date: getDateStringFromWeeksAgo(weeksAgo),
+          index: pageNumber,
+          pics: picUrls
+        }
+      ]);
+    }
+    fetchData();
+    setWeeksAgo(weeksAgo + 1);
+  }, [])
 
   const observer = useRef();
   const lastPageRef = useCallback((node) => {
@@ -57,17 +84,34 @@ const Home = () => {
     [0, -window.innerWidth]
   );
 
-  function loadFunc() {
+  async function loadFunc() {
+    if (weeksAgo > 4) {
+      return
+    }
+
+    const response = await fetch("http://localhost:3000/", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ date: getDateStringFromWeeksAgo(weeksAgo) })
+    })
+
+    console.log("SUBSEQUENT LOAD", getDateStringFromWeeksAgo(weeksAgo))
+    const picUrls = await response.json();
+
+    console.log(picUrls)
     setSections([
       ...sections,
       {
-        title: "Last Week",
-        date: "10.20-003.3",
+        title: "Week of ",
+        date: getDateStringFromWeeksAgo(weeksAgo),
         index: pageNumber,
-      },
+        pics: picUrls
+      }
     ]);
     setPageNumber(pageNumber + 1);
-    console.log("loadFun called");
+    setWeeksAgo(weeksAgo + 1);
   }
 
   useEffect(() => {
@@ -86,11 +130,13 @@ const Home = () => {
             // setHasMore(true);
             return (
               <div key={index} className="relative">
-                <Dummy 
-                ref={lastPageRef}
-                title={section.title}
-                date={section.title}
-                index={section.index}/>
+                <Dummy
+                  ref={lastPageRef}
+                  title={section.title}
+                  date={section.date}
+                  index={section.index}
+                  pics={section.pics} />
+
                 {/* <HomeSection
                 ref={lastPageRef}
                 title={section.title}
@@ -105,8 +151,10 @@ const Home = () => {
               <div key={index} className="relative">
                 {/* <Dummy key={index} /> */}
                 <Dummy title={section.title}
-                date={section.title}
-                index={section.index}/>
+                  date={section.date}
+                  index={section.index}
+                  pics={section.pics}
+                />
 
                 {/* <HomeSection
                 
