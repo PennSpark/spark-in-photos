@@ -29,11 +29,9 @@ app.message(async ({ message }) => {
         const time = data.created
         const user = data.user
 
+        console.log(time)
+
         fetchAndUpload(url, time, user)
-        // creates user for auth purpose
-        const auth = {
-            'Authorization' : 'Bearer ' + process.env.BOT_TOKEN
-        }
     } else {
         console.log("No file in message :(")
     }
