@@ -4,6 +4,7 @@ import pin from '../assets/pin.png'
 import { motion } from 'framer-motion'
 import PicInfo from './PicInfo'
 import { useState } from 'react'
+import '../App.css'
 
 
 const Picture = (props) => {
@@ -49,10 +50,25 @@ const Picture = (props) => {
 
     return (
         <>
-            <motion.div className='h-screen w-[200vw] absolute top-[-10vh] left-0 bg-white z-[50] pointer-events-none' animate={hover ? "not" : "trans"} variants={overlay}/>
-            <motion.div className='absolute' style={{ left: props.x, top: props.y, }} >
-                <motion.div className='inline-block' whileHover={"hover"} initial={"ini"} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+            <div className='indiv-image'>
+                <motion.div className='h-screen w-[100vw] fixed top-0 left-0 bg-white z-[50] pointer-events-none' animate={hover ? "not" : "trans"} variants={overlay} />
+                <motion.div className='absolute' style={{ left: props.x, top: props.y, zIndex: props.z }} >
+                    <motion.div className='inline-block' whileHover={"hover"} initial={"ini"} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+                        <motion.div className={`relative inline-block origin-top-center ${hover ? `z-[102]` : `z-0`}`} style={{ rotate: tilt }}>
+                            <img src={pin} className='absolute left-0 right-0 m-auto' />
+                            <img src={props.img} className='border-4 border-[#FCFCFC] max-w-xs' />
+                        </motion.div>
+                        <motion.div className={`${hover ? `z-[101]` : `z-[0]`} relative`} variants={variants} transition={{ bounce: 0 }}>
+                            {/* <div className={`${hover ? `z-[101]` : `z-[0]`}`}>
+                            <PicInfo title="Hello" people={["Paul", "Lah", "marcel", "lah", "sumanth", "lah"]} location="Cool stuff!" hover={hover}/>
+                        </div> */}
+                        </motion.div>
+                    </motion.div>
 
+
+                </motion.div>
+
+                {/*<motion.div className='inline-block' whileHover={"hover"} initial={"ini"} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
                     <motion.div className={`relative inline-block origin-top-center ${hover ? `z-[102]` : `z-40`}`} style={{ rotate: tilt }}>
                         <img src={pin} className='absolute left-0 right-0 m-auto' />
                         <img src={props.img} className='border-4 border-[#FCFCFC] max-w-xs' />
@@ -62,10 +78,10 @@ const Picture = (props) => {
                             <PicInfo title="Hello" people={["Paul", "Lah", "marcel", "lah", "sumanth", "lah"]} location="Cool stuff!" hover={hover}/>
                         </div>
                     </motion.div>
-                </motion.div>
+</motion.div>*/}
 
 
-            </motion.div>
+            </div>
         </>
 
     )

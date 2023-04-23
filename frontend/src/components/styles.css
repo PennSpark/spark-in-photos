@@ -1,0 +1,32 @@
+
+
+.inline-block {
+    display: inline-block;
+}
+
+.w-100 {
+    width: 100%;
+
+}
+
+.main-div {
+    width: min-content;
+    /* white-space: nowrap; */
+    /* display: flex; */
+    /* flex-direction: row; */
+}
+
+.homesection {
+    /* position: relative; */
+}
+
+.home {
+    position: relative;
+}
+
+.image {
+    /* width: 100rem; */
+    min-width: 100rem;
+    height: 100%;
+}
+

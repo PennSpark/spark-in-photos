@@ -9,8 +9,8 @@ const PicInfo = ({people, location, title, hover}) => {
           <p className='ml-1 z-auto'>{title}</p>
         </div>
         <p className='ml-1 font-spaceGrotesk font-normal z-auto  text-s'>{location}</p>
-        <div className="flex w-full flex-wrap z-auto">{people.map(person => {
-          return <p className='z-auto px-1 py-0.5 ml-1 mb-0.5 p-1 font-spaceGrotesk font-light text-xs text-white bg-stone-400 rounded-sm'>@{person}</p>
+        <div className="flex w-full flex-wrap z-auto">{people.map((person, index) => {
+          return <p key = {index} className='z-auto px-1 py-0.5 ml-1 mb-0.5 p-1 font-spaceGrotesk font-light text-xs text-white bg-stone-400 rounded-sm'>@{person}</p>
         })}</div>
         
         
