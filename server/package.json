@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "set NODE_ENV=development ./node_modules/.bin/netlify-lambda serve src",
+    "build": "set NODE_ENV=production ./node_modules/.bin/netlify-lambda build src"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +15,8 @@
     "cloudinary": "^1.36.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "netlify-lambda": "^2.0.16",
+    "serverless-http": "^3.2.0"
   }
 }
